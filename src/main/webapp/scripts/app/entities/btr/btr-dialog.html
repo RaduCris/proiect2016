@@ -1,0 +1,176 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myBtrLabel" translate="btravelappApp.btr.home.createOrEditLabel">Create or edit a Btr</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <!--  
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="btr.id" readonly />
+        </div>  
+        
+        <div class="form-group">
+            <label class="control-label" translate="btravelappApp.btr.id_user" for="field_id_user">Id_user</label>
+            <input type="number" class="form-control" name="id_user" id="field_id_user"
+                    ng-model="btr.id_user"
+                    required />
+            <div ng-show="editForm.id_user.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.id_user.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.id_user.$error.number" translate="entity.validation.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="btravelappApp.btr.status" for="field_status">Status</label>
+            <input type="text" class="form-control" name="status" id="field_status"
+                    ng-model="btr.status"
+                    required />
+            <div ng-show="editForm.status.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.status.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        -->
+        <div class="form-group">
+            <label class="control-label" translate="btravelappApp.btr.start_date" for="field_start_date">Start_date</label>
+            <input type="datetime-local" class="form-control" name="start_date" id="field_start_date"
+                    ng-model="btr.start_date"
+                    required />
+            <div ng-show="editForm.start_date.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.start_date.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.start_date.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="btravelappApp.btr.end_date" for="field_end_date">End_date</label>
+            <input type="datetime-local" class="form-control" name="end_date" id="field_end_date"
+                    ng-model="btr.end_date"
+                    required />
+            <div ng-show="editForm.end_date.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.end_date.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.end_date.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="btravelappApp.btr.location" for="field_location">Location</label>
+            <input type="text" class="form-control" name="location" id="field_location"
+                    ng-model="btr.location"
+                    required />
+            <div ng-show="editForm.location.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.location.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="btravelappApp.btr.center_cost" for="field_center_cost">Center_cost</label>
+            <input type="text" class="form-control" name="center_cost" id="field_center_cost"
+                    ng-model="btr.center_cost"
+                    required />
+            <div ng-show="editForm.center_cost.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.center_cost.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <!--  
+        <div class="form-group">
+            <label class="control-label" translate="btravelappApp.btr.request_date" for="field_request_date">Request_date</label>
+            <input type="datetime-local" class="form-control" name="request_date" id="field_request_date"
+                    ng-model="btr.request_date"
+                    required />
+            <div ng-show="editForm.request_date.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.request_date.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.request_date.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="btravelappApp.btr.last_modified_date" for="field_last_modified_date">Last_modified_date</label>
+            <input type="datetime-local" class="form-control" name="last_modified_date" id="field_last_modified_date"
+                    ng-model="btr.last_modified_date"
+                    required />
+            <div ng-show="editForm.last_modified_date.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.last_modified_date.$error.required" translate="entity.validation.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.last_modified_date.$error.ZonedDateTimelocal" translate="entity.validation.ZonedDateTimelocal">
+                    This field should be a date and time.
+                </p>
+            </div>
+        </div>
+		-->
+        <div class="form-group">
+            <label translate="btravelappApp.btr.user" for="field_user">user</label>
+            <select class="form-control" id="field_user" name="user" ng-model="btr.user" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="btravelappApp.btr.assigned_to" for="field_assigned_to">assigned_to</label>
+            <select class="form-control" id="field_assigned_to" name="assigned_to" ng-model="btr.assigned_to" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="btravelappApp.btr.assigned_from" for="field_assigned_from">assigned_from</label>
+            <select class="form-control" id="field_assigned_from" name="assigned_from" ng-model="btr.assigned_from" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="btravelappApp.btr.manager" for="field_manager">manager</label>
+            <select class="form-control" id="field_manager" name="manager" ng-model="btr.manager" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label translate="btravelappApp.btr.supplier" for="field_supplier">supplier</label>
+            <select class="form-control" id="field_supplier" name="supplier" ng-model="btr.supplier" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

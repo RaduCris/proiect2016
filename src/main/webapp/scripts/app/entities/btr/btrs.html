@@ -1,0 +1,101 @@
+<div>
+    <h2 translate="btravelappApp.btr.home.title">Btrs</h2>
+    <jh-alert></jh-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="btr.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span 
+class="hidden-xs"                        translate="btravelappApp.btr.home.createLabel">Create new Btr
+                    </span>
+                </button>
+            </div>
+            <div class="col-xs-8 no-padding-right">
+                <form name="searchForm" class="form-inline">
+                    <div class="input-group pull-right" >
+                        <input type="text" class="form-control" ng-model="searchQuery" id="searchQuery" placeholder="{{ 'btravelappApp.btr.home.search' | translate }}">
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+                    <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span translate="btravelappApp.btr.status">Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="start_date"><span translate="btravelappApp.btr.start_date">Start_date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="end_date"><span translate="btravelappApp.btr.end_date">End_date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="location"><span translate="btravelappApp.btr.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="center_cost"><span translate="btravelappApp.btr.center_cost">Center_cost</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="request_date"><span translate="btravelappApp.btr.request_date">Request_date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="last_modified_date"><span translate="btravelappApp.btr.last_modified_date">Last_modified_date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.login"><span translate="btravelappApp.btr.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="assigned_to.login"><span translate="btravelappApp.btr.assigned_to">assigned_to</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="assigned_from.login"><span translate="btravelappApp.btr.assigned_from">assigned_from</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="manager.login"><span translate="btravelappApp.btr.manager">manager</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="supplier.login"><span translate="btravelappApp.btr.supplier">supplier</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="btr in btrs track by btr.id">
+                    <td><a ui-sref="btr.detail({id:btr.id})">{{btr.id}}</a></td>
+                    <td>{{btr.status}}</td>
+                    <td>{{btr.start_date | date:'medium'}}</td>
+                    <td>{{btr.end_date | date:'medium'}}</td>
+                    <td>{{btr.location}}</td>
+                    <td>{{btr.center_cost}}</td>
+                    <td>{{btr.request_date | date:'medium'}}</td>
+                    <td>{{btr.last_modified_date | date:'medium'}}</td>
+                    <td>
+                        {{btr.user.login}}
+                    </td>
+                    <td>
+                        {{btr.assigned_to.login}}
+                    </td>
+                    <td>
+                        {{btr.assigned_from.login}}
+                    </td>
+                    <td>
+                        {{btr.manager.login}}
+                    </td>
+                    <td>
+                        {{btr.supplier.login}}
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="btr.detail({id:btr.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="btr.edit({id:btr.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="btr.delete({id:btr.id})"
+                                    class="btn btn-danger btn-sm">                                    
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
+</div>

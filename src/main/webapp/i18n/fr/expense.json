@@ -1,0 +1,27 @@
+{
+    "btravelappApp": {
+        "expense" : {
+            "home": {
+                "title": "Expenses",
+                "createLabel": "Créer un nouveau Expense",
+                "createOrEditLabel": "Créer ou éditer un Expense",
+                "search": "Search for Expense"
+            },
+            "created": "Un nouveau Expense a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Expense avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Expense avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Expense {{ id }} ?"
+            },
+            "detail": {
+                "title": "Expense"
+            },
+            "id_expense_type": "Id_expense_type",
+            "id_btr": "Id_btr",
+            "expense_cost": "Expense_cost",
+            "btr": "Btr",
+            "expense_type": "Expense_type"
+        }
+    }
+}
+

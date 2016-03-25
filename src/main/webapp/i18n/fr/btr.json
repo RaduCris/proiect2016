@@ -1,0 +1,35 @@
+{
+    "btravelappApp": {
+        "btr" : {
+            "home": {
+                "title": "Btrs",
+                "createLabel": "Créer un nouveau Btr",
+                "createOrEditLabel": "Créer ou éditer un Btr",
+                "search": "Search for Btr"
+            },
+            "created": "Un nouveau Btr a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Btr avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Btr avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Btr {{ id }} ?"
+            },
+            "detail": {
+                "title": "Btr"
+            },
+            "status": "Status",
+            "start_date": "Start Date",
+            "end_date": "End Date",
+            "location": "Location",
+            "center_cost": "Center Cost",
+            "request_date": "Request Date",
+            "last_modified_date": "Last Modified Date",
+            "user": "User",
+            "expense": "Expense",
+            "assigned_to": "Assigned To",
+            "assigned_from": "Assigned From",
+            "manager": "Manager",
+            "supplier": "Supplier"
+        }
+    }
+}
+
