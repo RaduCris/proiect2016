@@ -5,11 +5,11 @@
                 "title": "Expenses",
                 "createLabel": "Créer un nouveau Expense",
                 "createOrEditLabel": "Créer ou éditer un Expense",
-                "search": "Search for Expense"
+                "search": "Rechercher des dépenses"
             },
-            "created": "Un nouveau Expense a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Expense avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Expense avec l'identifiant {{ param }} a été supprimé",
+            "created": "Un nouveau Frais a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Frais avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Frais avec l'identifiant {{ param }} a été supprimé",
             "delete": {
                 "question": "Etes-vous certain de vouloir supprimer le Expense {{ id }} ?"
             },

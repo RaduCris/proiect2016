@@ -2,7 +2,7 @@
     "btravelappApp": {
         "btr" : {
             "home": {
-                "title": "Btrs",
+                "title": "BTRs",
                 "createLabel": "Créer un nouveau Btr",
                 "createOrEditLabel": "Créer ou éditer un Btr",
                 "search": "Search for Btr"
@@ -14,7 +14,7 @@
                 "question": "Etes-vous certain de vouloir supprimer le Btr {{ id }} ?"
             },
             "detail": {
-                "title": "Btr"
+                "title": "BTR"
             },
             "status": "Status",
             "start_date": "Start Date",

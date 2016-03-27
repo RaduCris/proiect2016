@@ -240,4 +240,12 @@ public class User extends AbstractAuditingEntity implements Serializable {
             ", idManager='" + idManager + '\'' +   // adaugat 10.03.2016
             "}";
     }
+
+    /*
+    TENTATIVA DE A PRELUA USER-UL CURENT
+    public static String getCurrentUser() {
+    	String result = System.getProperty("User.lastName User.firstName");
+ 		return result;
+ 	}
+ 	*/
 }

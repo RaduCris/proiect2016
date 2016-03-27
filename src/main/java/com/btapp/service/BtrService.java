@@ -43,7 +43,8 @@ public class BtrService {
     public Btr save(Btr btr) {
         log.debug("Request to save Btr : {}", btr);
         btr.setStatus("Initiated");    
-       // btr.setAssigned_from(User.getLogin());  
+        //btr.setAssigned_from(User.getCurrentUser());   TENTATIVA DE A PRELUA USER-UL CURENT
+        //btr.setAssigned_from(User.class.cast(User.getCurrentUser()));  
         btr.setRequest_date(ZonedDateTime.now());
         btr.setLast_modified_date(ZonedDateTime.now()); // modificat 25.03.2016
         Btr result = btrRepository.save(btr);
@@ -51,7 +52,8 @@ public class BtrService {
         return result;
     }
 
-    /**
+
+	/**
      *  get all the btrs.
      *  @return the list of entities
      */
