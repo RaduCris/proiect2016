@@ -1,6 +1,7 @@
 package com.btapp.service;
 
 import com.btapp.domain.Btr;
+import com.btapp.domain.User;
 import com.btapp.repository.BtrRepository;
 import com.btapp.repository.search.BtrSearchRepository;
 import org.slf4j.Logger;
@@ -41,7 +42,8 @@ public class BtrService {
      */
     public Btr save(Btr btr) {
         log.debug("Request to save Btr : {}", btr);
-        btr.setStatus("Initiated");
+        btr.setStatus("Initiated");    
+       // btr.setAssigned_from(User.getLogin());  
         btr.setRequest_date(ZonedDateTime.now());
         btr.setLast_modified_date(ZonedDateTime.now()); // modificat 25.03.2016
         Btr result = btrRepository.save(btr);

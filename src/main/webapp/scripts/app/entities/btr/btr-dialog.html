@@ -46,9 +46,11 @@
         -->
         <div class="form-group">
             <label class="control-label" translate="btravelappApp.btr.start_date" for="field_start_date">Start_date</label>
-            <input type="datetime-local" class="form-control" name="start_date" id="field_start_date"
-                    ng-model="btr.start_date"
-                    required />
+            <input id="field_start_date" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="btr.start_date" is-open="datePickerForStart_date.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForStart_dateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
             <div ng-show="editForm.start_date.$invalid">
                 <p class="help-block"
                     ng-show="editForm.start_date.$error.required" translate="entity.validation.required">
@@ -62,9 +64,11 @@
         </div>
         <div class="form-group">
             <label class="control-label" translate="btravelappApp.btr.end_date" for="field_end_date">End_date</label>
-            <input type="datetime-local" class="form-control" name="end_date" id="field_end_date"
-                    ng-model="btr.end_date"
-                    required />
+            <input id="field_end_date" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="btr.end_date" is-open="datePickerForEnd_date.status.opened"
+            required/>
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="datePickerForEnd_dateOpen($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
             <div ng-show="editForm.end_date.$invalid">
                 <p class="help-block"
                     ng-show="editForm.end_date.$error.required" translate="entity.validation.required">
