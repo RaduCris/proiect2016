@@ -14,38 +14,6 @@
                     ng-model="expense.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" translate="btravelappApp.expense.id_expense_type" for="field_id_expense_type">Id_expense_type</label>
-            <input type="number" class="form-control" name="id_expense_type" id="field_id_expense_type"
-                    ng-model="expense.id_expense_type"
-                    required />
-            <div ng-show="editForm.id_expense_type.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.id_expense_type.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.id_expense_type.$error.number" translate="entity.validation.number">
-                    This field should be a number.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" translate="btravelappApp.expense.id_btr" for="field_id_btr">Id_btr</label>
-            <input type="number" class="form-control" name="id_btr" id="field_id_btr"
-                    ng-model="expense.id_btr"
-                    required />
-            <div ng-show="editForm.id_btr.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.id_btr.$error.required" translate="entity.validation.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.id_btr.$error.number" translate="entity.validation.number">
-                    This field should be a number.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="control-label" translate="btravelappApp.expense.expense_cost" for="field_expense_cost">Expense_cost</label>
             <input type="number" class="form-control" name="expense_cost" id="field_expense_cost"
                     ng-model="expense.expense_cost"

@@ -61,8 +61,6 @@ angular.module('btravelappApp')
                         resolve: {
                             entity: function () {
                                 return {
-                                    id_expense_type: null,
-                                    id_btr: null,
                                     expense_cost: null,
                                     id: null
                                 };

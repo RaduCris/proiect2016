@@ -16,11 +16,9 @@
             "detail": {
                 "title": "Expense"
             },
-            "id_expense_type": "Id_expense_type",
-            "id_btr": "Id_btr",
-            "expense_cost": "Expense_cost",
-            "btr": "Btr",
-            "expense_type": "Expense_type"
+            "expense_cost": "Expense Cost",
+            "btr": "BTR",
+            "expense_type": "Expense Type"
         }
     }
 }

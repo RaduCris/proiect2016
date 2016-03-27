@@ -67,7 +67,7 @@ class ExpenseGatlingTest extends Simulation {
             .exec(http("Create new expense")
             .post("/api/expenses")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "id_expense_type":"0", "id_btr":"0", "expense_cost":null}""")).asJSON
+            .body(StringBody("""{"id":null, "expense_cost":null}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_expense_url")))
             .pause(10)

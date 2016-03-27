@@ -31,8 +31,6 @@ class="hidden-xs"                        translate="btravelappApp.expense.home.c
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="id_expense_type"><span translate="btravelappApp.expense.id_expense_type">Id_expense_type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="id_btr"><span translate="btravelappApp.expense.id_btr">Id_btr</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="expense_cost"><span translate="btravelappApp.expense.expense_cost">Expense_cost</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="btr.id"><span translate="btravelappApp.expense.btr">btr</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="expense_type.id"><span translate="btravelappApp.expense.expense_type">expense_type</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -42,8 +40,6 @@ class="hidden-xs"                        translate="btravelappApp.expense.home.c
             <tbody>
                 <tr ng-repeat="expense in expenses track by expense.id">
                     <td><a ui-sref="expense.detail({id:expense.id})">{{expense.id}}</a></td>
-                    <td>{{expense.id_expense_type}}</td>
-                    <td>{{expense.id_btr}}</td>
                     <td>{{expense.expense_cost}}</td>
                     <td>
                         <a ui-sref="btr.detail({id:expense.btr.id})">{{expense.btr.id}}</a>

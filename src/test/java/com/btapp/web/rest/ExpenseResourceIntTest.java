@@ -4,7 +4,7 @@ import com.btapp.Application;
 import com.btapp.domain.Expense;
 import com.btapp.repository.ExpenseRepository;
 import com.btapp.service.ExpenseService;
-
+import com.btapp.web.rest.TestUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,12 +43,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class ExpenseResourceIntTest {
 
 
-    private static final Integer DEFAULT_ID_EXPENSE_TYPE = 1;
-    private static final Integer UPDATED_ID_EXPENSE_TYPE = 2;
-
-    private static final Integer DEFAULT_ID_BTR = 1;
-    private static final Integer UPDATED_ID_BTR = 2;
-
     private static final Double DEFAULT_EXPENSE_COST = 1D;
     private static final Double UPDATED_EXPENSE_COST = 2D;
 
@@ -81,8 +75,6 @@ public class ExpenseResourceIntTest {
     @Before
     public void initTest() {
         expense = new Expense();
-        expense.setId_expense_type(DEFAULT_ID_EXPENSE_TYPE);
-        expense.setId_btr(DEFAULT_ID_BTR);
         expense.setExpense_cost(DEFAULT_EXPENSE_COST);
     }
 
@@ -102,45 +94,7 @@ public class ExpenseResourceIntTest {
         List<Expense> expenses = expenseRepository.findAll();
         assertThat(expenses).hasSize(databaseSizeBeforeCreate + 1);
         Expense testExpense = expenses.get(expenses.size() - 1);
-        assertThat(testExpense.getId_expense_type()).isEqualTo(DEFAULT_ID_EXPENSE_TYPE);
-        assertThat(testExpense.getId_btr()).isEqualTo(DEFAULT_ID_BTR);
         assertThat(testExpense.getExpense_cost()).isEqualTo(DEFAULT_EXPENSE_COST);
-    }
-
-    @Test
-    @Transactional
-    public void checkId_expense_typeIsRequired() throws Exception {
-        int databaseSizeBeforeTest = expenseRepository.findAll().size();
-        // set the field null
-        expense.setId_expense_type(null);
-
-        // Create the Expense, which fails.
-
-        restExpenseMockMvc.perform(post("/api/expenses")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(expense)))
-                .andExpect(status().isBadRequest());
-
-        List<Expense> expenses = expenseRepository.findAll();
-        assertThat(expenses).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkId_btrIsRequired() throws Exception {
-        int databaseSizeBeforeTest = expenseRepository.findAll().size();
-        // set the field null
-        expense.setId_btr(null);
-
-        // Create the Expense, which fails.
-
-        restExpenseMockMvc.perform(post("/api/expenses")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(expense)))
-                .andExpect(status().isBadRequest());
-
-        List<Expense> expenses = expenseRepository.findAll();
-        assertThat(expenses).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -172,8 +126,6 @@ public class ExpenseResourceIntTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(expense.getId().intValue())))
-                .andExpect(jsonPath("$.[*].id_expense_type").value(hasItem(DEFAULT_ID_EXPENSE_TYPE)))
-                .andExpect(jsonPath("$.[*].id_btr").value(hasItem(DEFAULT_ID_BTR)))
                 .andExpect(jsonPath("$.[*].expense_cost").value(hasItem(DEFAULT_EXPENSE_COST.doubleValue())));
     }
 
@@ -188,8 +140,6 @@ public class ExpenseResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(expense.getId().intValue()))
-            .andExpect(jsonPath("$.id_expense_type").value(DEFAULT_ID_EXPENSE_TYPE))
-            .andExpect(jsonPath("$.id_btr").value(DEFAULT_ID_BTR))
             .andExpect(jsonPath("$.expense_cost").value(DEFAULT_EXPENSE_COST.doubleValue()));
     }
 
@@ -210,8 +160,6 @@ public class ExpenseResourceIntTest {
 		int databaseSizeBeforeUpdate = expenseRepository.findAll().size();
 
         // Update the expense
-        expense.setId_expense_type(UPDATED_ID_EXPENSE_TYPE);
-        expense.setId_btr(UPDATED_ID_BTR);
         expense.setExpense_cost(UPDATED_EXPENSE_COST);
 
         restExpenseMockMvc.perform(put("/api/expenses")
@@ -223,8 +171,6 @@ public class ExpenseResourceIntTest {
         List<Expense> expenses = expenseRepository.findAll();
         assertThat(expenses).hasSize(databaseSizeBeforeUpdate);
         Expense testExpense = expenses.get(expenses.size() - 1);
-        assertThat(testExpense.getId_expense_type()).isEqualTo(UPDATED_ID_EXPENSE_TYPE);
-        assertThat(testExpense.getId_btr()).isEqualTo(UPDATED_ID_BTR);
         assertThat(testExpense.getExpense_cost()).isEqualTo(UPDATED_EXPENSE_COST);
     }
 

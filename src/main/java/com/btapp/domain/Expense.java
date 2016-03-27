@@ -25,14 +25,6 @@ public class Expense implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "id_expense_type", nullable = false)
-    private Integer id_expense_type;
-    
-    @NotNull
-    @Column(name = "id_btr", nullable = false)
-    private Integer id_btr;
-    
-    @NotNull
     @Column(name = "expense_cost", nullable = false)
     private Double expense_cost;
     
@@ -50,22 +42,6 @@ public class Expense implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getId_expense_type() {
-        return id_expense_type;
-    }
-    
-    public void setId_expense_type(Integer id_expense_type) {
-        this.id_expense_type = id_expense_type;
-    }
-
-    public Integer getId_btr() {
-        return id_btr;
-    }
-    
-    public void setId_btr(Integer id_btr) {
-        this.id_btr = id_btr;
     }
 
     public Double getExpense_cost() {
@@ -116,8 +92,6 @@ public class Expense implements Serializable {
     public String toString() {
         return "Expense{" +
             "id=" + id +
-            ", id_expense_type='" + id_expense_type + "'" +
-            ", id_btr='" + id_btr + "'" +
             ", expense_cost='" + expense_cost + "'" +
             '}';
     }

@@ -18,22 +18,6 @@
     "fields": [
         {
             "fieldId": 1,
-            "fieldName": "id_expense_type",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldId": 2,
-            "fieldName": "id_btr",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldId": 3,
             "fieldName": "expense_cost",
             "fieldType": "Double",
             "fieldValidateRules": [

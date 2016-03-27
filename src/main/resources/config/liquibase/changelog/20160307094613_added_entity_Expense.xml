@@ -21,14 +21,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="id_expense_type" type="integer">
-                <constraints nullable="false" />
-            </column>
-            
-            <column name="id_btr" type="integer">
-                <constraints nullable="false" />
-            </column>
-            
             <column name="expense_cost" type="double">
                 <constraints nullable="false" />
             </column>
