@@ -37,12 +37,16 @@ class="hidden-xs"                        translate="btravelappApp.btr.home.creat
                     <th jh-sort-by="location"><span translate="btravelappApp.btr.location">Location</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="center_cost"><span translate="btravelappApp.btr.center_cost">Center_cost</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="request_date"><span translate="btravelappApp.btr.request_date">Request_date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <!--  
                     <th jh-sort-by="last_modified_date"><span translate="btravelappApp.btr.last_modified_date">Last_modified_date</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="user.login"><span translate="btravelappApp.btr.user">user</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="assigned_to.login"><span translate="btravelappApp.btr.assigned_to">assigned_to</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="assigned_from.login"><span translate="btravelappApp.btr.assigned_from">assigned_from</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="manager.login"><span translate="btravelappApp.btr.manager">manager</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="supplier.login"><span translate="btravelappApp.btr.supplier">supplier</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    -->
+                    <th><span><center>Expenses</center></span></th>
+                    <th><span>&nbsp;&nbsp;&nbsp;&nbsp;BTR<br></>&nbsp;&nbsp;Details</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -55,6 +59,7 @@ class="hidden-xs"                        translate="btravelappApp.btr.home.creat
                     <td>{{btr.location}}</td>
                     <td>{{btr.center_cost}}</td>
                     <td>{{btr.request_date | date:'medium'}}</td>
+                    <!--  
                     <td>{{btr.last_modified_date | date:'medium'}}</td>
                     <td>
                         {{btr.user.login}}
@@ -70,6 +75,17 @@ class="hidden-xs"                        translate="btravelappApp.btr.home.creat
                     </td>
                     <td>
                         {{btr.supplier.login}}
+                    </td>
+                    -->
+                    <td class="text-right">
+                    	<div class="btn-group flex-btn-group-container">
+                        	<button type="submit"
+                                    ui-sref="expense({id:btr.id})"
+                                    class="btn btn-info btn-sm"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                            </button>
+                       	</div>
                     </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
@@ -97,5 +113,5 @@ class="hidden-xs"                        translate="btravelappApp.btr.home.creat
             </tbody>
         </table>
     </div>
-    <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
+      <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager> 
 </div>

@@ -9,6 +9,7 @@ import com.btapp.security.AuthoritiesConstants;
 import com.btapp.service.MailService;
 import com.btapp.service.UserService;
 import com.btapp.web.rest.dto.UserDTO;
+import com.btapp.web.rest.TestUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

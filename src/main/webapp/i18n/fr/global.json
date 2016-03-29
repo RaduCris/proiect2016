@@ -10,6 +10,7 @@
                 "btr": "BTR",
                 "expense_type": "Type de dépense",
                 "expense": "Frais",
+                "expense": "Expense",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

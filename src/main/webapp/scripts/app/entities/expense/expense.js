@@ -8,6 +8,8 @@ angular.module('btravelappApp')
                 url: '/expenses',
                 data: {
                     authorities: ['ROLE_USER'],
+                	//authorities: ['ROLE_SUPPLIER'],
+                	//authorities: ['ROLE_MANAGER'],
                     pageTitle: 'btravelappApp.expense.home.title'
                 },
                 views: {
@@ -29,6 +31,7 @@ angular.module('btravelappApp')
                 url: '/expense/{id}',
                 data: {
                     authorities: ['ROLE_USER'],
+                	//authorities: ['ROLE_SUPPLIER'],
                     pageTitle: 'btravelappApp.expense.detail.title'
                 },
                 views: {
@@ -51,7 +54,8 @@ angular.module('btravelappApp')
                 parent: 'expense',
                 url: '/new',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    //authorities: ['ROLE_USER'],
+                	authorities: ['ROLE_SUPPLIER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -77,7 +81,8 @@ angular.module('btravelappApp')
                 parent: 'expense',
                 url: '/{id}/edit',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    //authorities: ['ROLE_USER'],
+                	authorities: ['ROLE_SUPPLIER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -100,7 +105,8 @@ angular.module('btravelappApp')
                 parent: 'expense',
                 url: '/{id}/delete',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    //authorities: ['ROLE_USER'],
+                	authorities: ['ROLE_SUPPLIER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({

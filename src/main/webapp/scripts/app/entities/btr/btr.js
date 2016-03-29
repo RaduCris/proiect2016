@@ -88,7 +88,8 @@ angular.module('btravelappApp')
                 url: '/{id}/edit',
                 data: {
                     //authorities: ['ROLE_USER'],  MODIFICAT 08.03.2016
-                	authorities: ['ROLE_SUPPLIER'], 
+                	//authorities: ['ROLE_SUPPLIER'], 
+                	authorities: ['ROLE_MANAGER'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -112,7 +113,7 @@ angular.module('btravelappApp')
                 url: '/{id}/delete',
                 data: {
                     //authorities: ['ROLE_USER'], MODIFICAT 08.03.2016
-                	authorities: ['ROLE_MANAGER'],
+                	authorities: ['ROLE_ADMIN'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({

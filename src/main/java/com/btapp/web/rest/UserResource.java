@@ -194,11 +194,11 @@ public class UserResource {
                 .map(managedUserDTO -> new ResponseEntity<>(managedUserDTO, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
+ /*   
     // modificat 15.03.2016
     /**
      * GET  /users/manager -> get the "login" user for managers
-     */
+     
     @RequestMapping(value = "/users/manager",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -214,7 +214,7 @@ public class UserResource {
  // modificat 17.03.2016
     /**
      * GET  /users/supplier -> get the "login" user for supplier
-     */
+     
     @RequestMapping(value = "/users/supplier",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -229,7 +229,7 @@ public class UserResource {
     
     /**
      * GET  /users/employee -> get the "login" user for employee
-     */
+     
     @RequestMapping(value = "/users/employee",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
@@ -241,6 +241,7 @@ public class UserResource {
                 .map(managedUserDTO -> new ResponseEntity<>(managedUserDTO, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    */
     
     /**
      * DELETE  USER :login -> delete the "login" User.

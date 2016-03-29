@@ -3,7 +3,11 @@ package com.btapp.service;
 import com.btapp.domain.Btr;
 import com.btapp.domain.User;
 import com.btapp.repository.BtrRepository;
+import com.btapp.repository.UserRepository;
 import com.btapp.repository.search.BtrSearchRepository;
+import com.btapp.web.rest.UserResource;
+import com.btapp.web.rest.dto.ManagedUserDTO;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -31,6 +35,9 @@ public class BtrService {
     private final Logger log = LoggerFactory.getLogger(BtrService.class);
     
     @Inject
+    private UserRepository userRepository;
+    
+    @Inject
     private BtrRepository btrRepository;
     
     @Inject
@@ -42,9 +49,17 @@ public class BtrService {
      */
     public Btr save(Btr btr) {
         log.debug("Request to save Btr : {}", btr);
+        
+       btr.getUser();
+		// String user = User.getCurrentUser();
+       //Optional user = userRepository.findOneByLogin(btr.getUser().getCurrentUser());
+        Optional<User> user = userRepository.findOneByLogin(User.getCurrentUser());
         btr.setStatus("Initiated");    
-        //btr.setAssigned_from(User.getCurrentUser());   TENTATIVA DE A PRELUA USER-UL CURENT
-        //btr.setAssigned_from(User.class.cast(User.getCurrentUser()));  
+        //btr.setAssigned_from(User.getCurrentUser());   
+        //btr.setAssigned_from(User.class.cast(User.getCurrentUser()));  // nu merge!
+      //  btr.setAssigned_from((User) userRepository.findOneByLogin(user));
+        btr.setAssigned_from((User)user.get());
+        btr.setManager((User)user.get());
         btr.setRequest_date(ZonedDateTime.now());
         btr.setLast_modified_date(ZonedDateTime.now()); // modificat 25.03.2016
         Btr result = btrRepository.save(btr);

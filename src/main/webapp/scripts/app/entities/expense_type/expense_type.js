@@ -7,7 +7,8 @@ angular.module('btravelappApp')
                 parent: 'entity',
                 url: '/expense_types',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    //authorities: ['ROLE_USER'],
+                	authorities: ['ROLE_SUPPLIER'],
                     pageTitle: 'btravelappApp.expense_type.home.title'
                 },
                 views: {
@@ -28,7 +29,8 @@ angular.module('btravelappApp')
                 parent: 'entity',
                 url: '/expense_type/{id}',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    //authorities: ['ROLE_USER'],
+                	authorities: ['ROLE_SUPPLIER'],
                     pageTitle: 'btravelappApp.expense_type.detail.title'
                 },
                 views: {
@@ -51,7 +53,8 @@ angular.module('btravelappApp')
                 parent: 'expense_type',
                 url: '/new',
                 data: {
-                    authorities: ['ROLE_USER'],
+                   // authorities: ['ROLE_USER'],
+                	authorities: ['ROLE_ADMIN'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -77,7 +80,8 @@ angular.module('btravelappApp')
                 parent: 'expense_type',
                 url: '/{id}/edit',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    //authorities: ['ROLE_USER'],
+                	authorities: ['ROLE_ADMIN'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({
@@ -100,7 +104,8 @@ angular.module('btravelappApp')
                 parent: 'expense_type',
                 url: '/{id}/delete',
                 data: {
-                    authorities: ['ROLE_USER'],
+                    //authorities: ['ROLE_USER'],
+                	authorities: ['ROLE_ADMIN'],
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({

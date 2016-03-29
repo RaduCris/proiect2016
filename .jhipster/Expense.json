@@ -12,7 +12,7 @@
             "relationshipName": "expense_type",
             "otherEntityName": "expense_type",
             "relationshipType": "many-to-one",
-            "otherEntityField": "id"
+            "otherEntityField": "type"
         }
     ],
     "fields": [
