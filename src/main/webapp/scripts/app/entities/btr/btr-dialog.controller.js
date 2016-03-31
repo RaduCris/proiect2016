@@ -4,6 +4,7 @@ angular.module('btravelappApp').controller('BtrDialogController',
     ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Btr', 'User', 'Expense',
         function($scope, $stateParams, $uibModalInstance, entity, Btr, User, Expense) {
 
+    	//$scope.authorities = ["ROLE_MANAGER", "ROLE_SUPPLIER"]; // adaugat 31.03.2016
         $scope.btr = entity;
         $scope.users = User.query();
         $scope.expenses = Expense.query();

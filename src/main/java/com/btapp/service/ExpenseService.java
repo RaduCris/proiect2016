@@ -95,4 +95,15 @@ public class ExpenseService {
             .stream(expenseSearchRepository.search(queryStringQuery(query)).spliterator(), false)
             .collect(Collectors.toList());
     }
+    
+    /** INCERCARE
+     *  get expenses by btr id.
+     *  @return the entity
+     
+    public Expense findOneById(Long id) {
+        //log.debug("Request to get Expense for a btr : {}", id);
+        Expense expense = (Expense) expenseRepository.findOneById();
+        return expense;
+    }
+    */
 }

@@ -50,15 +50,19 @@ public class BtrService {
     public Btr save(Btr btr) {
         log.debug("Request to save Btr : {}", btr);
         
-       btr.getUser();
-		// String user = User.getCurrentUser();
-       //Optional user = userRepository.findOneByLogin(btr.getUser().getCurrentUser());
+        btr.getUser();
         Optional<User> user = userRepository.findOneByLogin(User.getCurrentUser());
-        btr.setStatus("Initiated");    
-        //btr.setAssigned_from(User.getCurrentUser());   
-        //btr.setAssigned_from(User.class.cast(User.getCurrentUser()));  // nu merge!
-      //  btr.setAssigned_from((User) userRepository.findOneByLogin(user));
+        
+        if(btr.getStatus() == null){
+        	btr.setStatus("Initiated");    }
+        else
+	        if(btr.getStatus() == "Initiated"){
+	        	btr.setStatus("Waiting for approval"); 
+	        }
+        
         btr.setAssigned_from((User)user.get());
+        
+        btr.setSupplier(btr.getAssigned_to()); // ma intereseaza supplier-ul curent care se ocupa de btr 
         btr.setManager((User)user.get());
         btr.setRequest_date(ZonedDateTime.now());
         btr.setLast_modified_date(ZonedDateTime.now()); // modificat 25.03.2016
@@ -67,7 +71,52 @@ public class BtrService {
         return result;
     }
 
+    /**
+     * Save a approved btr.
+     * @return the persisted entity
+     */
+    public Btr approve(Btr btr) {
+        log.debug("Request to approve Btr : {}", btr);
 
+        if(btr.getStatus() == "Waiting for approval"){
+        	btr.setStatus("Issuing tickets");
+        }
+        Btr result = btrRepository.save(btr);
+        btrSearchRepository.save(result);
+        return result;
+        //Btr result = ((BtrService) btrRepository).approve(btr);
+       // ((BtrService) btrSearchRepository).approve(result);
+       // return result;
+    }
+    
+    /**
+     * Save a rejected btr.
+     * @return the persisted entity
+     */
+    public Btr reject(Btr btr) {
+        log.debug("Request to reject Btr : {}", btr);
+
+        if(btr.getStatus() == "Waiting for approval"){
+        	btr.setStatus("Initiated");
+        }
+        Btr result = btrRepository.save(btr);
+        btrSearchRepository.save(result);
+        return result;
+    }
+    
+    /**
+     * Save a canceled btr.
+     * @return the persisted entity
+     */
+    public Btr cancel(Btr btr) {
+        log.debug("Request to cancel Btr : {}", btr);
+        btr.setStatus("Canceled");
+        
+        Btr result = btrRepository.save(btr);
+        btrSearchRepository.save(result);
+        return result;
+    }
+    
 	/**
      *  get all the btrs.
      *  @return the list of entities

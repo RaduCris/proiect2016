@@ -62,12 +62,9 @@ angular.module('btravelappApp')
                         resolve: {
                             entity: function () {
                                 return {
-                                    //id_user: null,
                                     status: null,
                                     start_date: null,
                                     end_date: null,
-                                    //assigned_to: null,
-                                    //assigned_from: null,
                                     location: null,
                                     center_cost: null,
                                     request_date: null,
@@ -88,8 +85,8 @@ angular.module('btravelappApp')
                 url: '/{id}/edit',
                 data: {
                     //authorities: ['ROLE_USER'],  MODIFICAT 08.03.2016
-                	//authorities: ['ROLE_SUPPLIER'], 
-                	authorities: ['ROLE_MANAGER'],
+                	authorities: ['ROLE_SUPPLIER'] ['ROLE_MANAGER'], //modificat 30.03.2016
+                	//authorities: 
                 },
                 onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
                     $uibModal.open({

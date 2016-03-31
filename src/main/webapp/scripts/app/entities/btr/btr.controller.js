@@ -19,8 +19,7 @@ angular.module('btravelappApp')
             $scope.loadAll();
         };
         $scope.loadAll();
-
-
+        
         $scope.search = function () {
             BtrSearch.query({query: $scope.searchQuery}, function(result) {
                 $scope.btrs = result;

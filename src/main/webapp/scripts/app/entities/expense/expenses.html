@@ -75,3 +75,9 @@ class="hidden-xs"                        translate="btravelappApp.expense.home.c
     </div>
     <uib-pager total-items="totalItems" ng-model="page" ng-change="loadAll()"></uib-pager>
 </div>
+<!-- Bug! Solutie: sa ma trimita in pagina btrs.html onclick="window.history.back()" -->
+<button type="submit"
+		onclick="location.href='/#/btrs'"            
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+</button>

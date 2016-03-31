@@ -3,11 +3,12 @@
     <jh-alert></jh-alert>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="btr.new" >
+            <div class="col-xs-4 no-padding-left" has-authority="ROLE_MANAGER">
+                <button class="btn btn-primary" ui-sref="btr.new">
                     <span class="glyphicon glyphicon-plus"></span>
-                    <span 
-class="hidden-xs"                        translate="btravelappApp.btr.home.createLabel">Create new Btr
+                    <span class="hidden-xs"   
+                                    
+                          translate="btravelappApp.btr.home.createLabel">Create new Btr
                     </span>
                 </button>
             </div>
@@ -46,6 +47,7 @@ class="hidden-xs"                        translate="btravelappApp.btr.home.creat
                     <th jh-sort-by="supplier.login"><span translate="btravelappApp.btr.supplier">supplier</span> <span class="glyphicon glyphicon-sort"></span></th>
                     -->
                     <th><span><center>Expenses</center></span></th>
+                    <th has-authority="ROLE_MANAGER"><span><center>BTR Approval</center></span></th>
                     <th><span>&nbsp;&nbsp;&nbsp;&nbsp;BTR<br></>&nbsp;&nbsp;Details</span></th>
                     <th></th>
                 </tr>
@@ -86,7 +88,17 @@ class="hidden-xs"                        translate="btravelappApp.btr.home.creat
                                 <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
                             </button>
                        	</div>
-                    </td>
+                    </td>     
+                    <td class="text-right" has-authority="ROLE_MANAGER">
+                        <div class="btn-group flex-btn-group-container">
+                        	<button type="submit" class="btn btn-success btn-sm" ng-model="btr.status"> 
+                        		<span>Approve</span>
+                        	</button>
+                        	<button type="submit" class="btn btn-danger btn-sm" ng-model="btr.status"> 
+                        		<span>Reject</span>
+                        	</button>
+                        </div>
+                    </td>  
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -101,9 +113,20 @@ class="hidden-xs"                        translate="btravelappApp.btr.home.creat
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
                             </button>
+                            
+                            <!--  buton de anulare  -->
+                            <button type="submit"
+                                    ui-sref="btr.cancel({id:btr.id})"
+                                    class="btn btn-danger btn-sm"
+                                    has-authority="ROLE_MANAGER">                                    
+                                <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;
+                                <span class="hidden-xs hidden-sm">Cancel</span>
+                            </button>
+                            
                             <button type="submit"
                                     ui-sref="btr.delete({id:btr.id})"
-                                    class="btn btn-danger btn-sm">                                    
+                                    class="btn btn-danger btn-sm"
+                                    has-authority="ROLE_ADMIN">                                    
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
                             </button>
