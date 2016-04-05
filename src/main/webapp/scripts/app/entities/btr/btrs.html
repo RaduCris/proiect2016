@@ -22,6 +22,25 @@
                             </button>
                         </span>
                     </div>
+                    <!--  INCERCARE MULTI-SELECT PENTRU STATUS 				05.042016 
+                    <div class="input-group pull-right" >
+                    	<label class="control-label" translate="btravelappApp.btr.status" for="field_status">Status</label>
+                    	<script type="text/javascript" src="angularjs-dropdown-multiselect.js"></script>
+            				<select class="form-control" id="searchQuery" name="status" ng-model="searchQuery" 
+            						placeholder="{{ 'btravelappApp.btr.home.search' | translate }}">
+                				<option value="Initiated">Initiated</option>
+                				<option value="Waiting for approval">Waiting for approval</option>
+                				<option value="Issuing tickets">Issuing tickets</option>
+                				<option value="Finished">Finished</option>
+                				<option value="Closed">Closed</option>
+            				</select>
+                        <span  class="input-group-btn width-min" >
+                            <button class="btn btn-info" ng-click="search()">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                    -->
                 </form>
             </div>
         </div>
@@ -47,15 +66,15 @@
                     <th jh-sort-by="supplier.login"><span translate="btravelappApp.btr.supplier">supplier</span> <span class="glyphicon glyphicon-sort"></span></th>
                     -->
                     <th><span><center>Expenses</center></span></th>
-                    <th has-authority="ROLE_MANAGER"><span><center>BTR Approval</center></span></th>
-                    <th><span>&nbsp;&nbsp;&nbsp;&nbsp;BTR<br></>&nbsp;&nbsp;Details</span></th>
+                    <th><span><center>BTR Management</center></span></th>
+                    <th has-authority="ROLE_MANAGER" ><span><center>BTR Approval</center></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="btr in btrs track by btr.id">
                     <td><a ui-sref="btr.detail({id:btr.id})">{{btr.id}}</a></td>
-                    <td>{{btr.status}}</td>
+                    <td ng-model="status">{{btr.status}}</td>
                     <td>{{btr.start_date | date:'medium'}}</td>
                     <td>{{btr.end_date | date:'medium'}}</td>
                     <td>{{btr.location}}</td>
@@ -81,26 +100,30 @@
                     -->
                     <td class="text-right">
                     	<div class="btn-group flex-btn-group-container">
-                        	<button type="submit"
+                    		<button type="submit"
                                     ui-sref="expense({id:btr.id})"
-                                    class="btn btn-info btn-sm"> 
+                                    class="btn btn-info btn-sm"
+                                    has-any-authority="ROLE_SUPPLIER"
+                                    ng-show="btr.status=='Initiated'"> 
                                 <span class="glyphicon glyphicon-eye-open"></span>
-                                <span class="hidden-xs hidden-sm" translate="entity.action.view"></span>
+                                <span class="hidden-xs hidden-sm" 
+                                	  translate="entity.action.view">
+                                </span>
+                            </button>
+                        	<button type="submit"
+                                    ui-sref="expense.detail({id:btr.id})"
+                                    class="btn btn-info btn-sm"
+                                    has-any-authority="ROLE_MANAGER"
+                                    ng-hide="btr.status=='Initiated'"> 
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" 
+                                	  translate="entity.action.view">
+                                </span>
                             </button>
                        	</div>
-                    </td>     
-                    <td class="text-right" has-authority="ROLE_MANAGER">
-                        <div class="btn-group flex-btn-group-container">
-                        	<button type="submit" class="btn btn-success btn-sm" ng-model="btr.status"> 
-                        		<span>Approve</span>
-                        	</button>
-                        	<button type="submit" class="btn btn-danger btn-sm" ng-model="btr.status"> 
-                        		<span>Reject</span>
-                        	</button>
-                        </div>
-                    </td>  
+                    </td>    
                     <td class="text-right">
-                        <div class="btn-group flex-btn-group-container">
+                        <div class="btn-group flex-btn-group-container" ng-controller="BtrController">
                             <button type="submit"
                                     ui-sref="btr.detail({id:btr.id})"
                                     class="btn btn-info btn-sm"> 
@@ -109,18 +132,19 @@
                             </button>
                             <button type="submit"
                                     ui-sref="btr.edit({id:btr.id})"
-                                    class="btn btn-primary btn-sm">
+                                    class="btn btn-primary btn-sm"
+                                    has-any-authority="ROLE_MANAGER, ROLE_SUPPLIER"
+                                    ng-show="btr.status=='Initiated'">
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
                             </button>
-                            
-                            <!--  buton de anulare  -->
-                            <button type="submit"
-                                    ui-sref="btr.cancel({id:btr.id})"
-                                    class="btn btn-danger btn-sm"
+                            <!--  buton de anulare  "  -->
+                            <button type="submit"   
+                            		ui-sref="btr.close({id:btr.id})" 
+                                    class="btn btn-danger btn-sm"                                                             
                                     has-authority="ROLE_MANAGER">                                    
                                 <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;
-                                <span class="hidden-xs hidden-sm">Cancel</span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.close"></span>
                             </button>
                             
                             <button type="submit"
@@ -131,7 +155,17 @@
                                 <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
                             </button>
                         </div>
-                    </td>
+                    </td> 
+                    <td class="text-right" has-authority="ROLE_MANAGER" ng-show="btr.status=='Waiting for approval'">
+                        <div class="btn-group flex-btn-group-container" ng-controller="BtrController">
+                        	<button type="submit" class="btn btn-success btn-sm" ng-model="btr.status" ng-click="approve()"> 
+                        		<span>Approve</span>
+                        	</button>
+                        	<button type="submit" class="btn btn-danger btn-sm" ng-model="btr.status" ng-click="reject()"> 
+                        		<span>Reject</span>
+                        	</button>
+                        </div>
+                    </td> 
                 </tr>
             </tbody>
         </table>

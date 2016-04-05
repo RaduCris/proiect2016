@@ -47,4 +47,21 @@ angular.module('btravelappApp')
                 id: null
             };
         };
+      
+        
+        /* PRIMA INCERCARE PENTRU CANCEL; MERGE DAR NU MODIFICA SI IN SPATE
+        $scope.cancel = function () {  
+        	//$scope.users.push({'status':$scope.btr.status});
+        	$scope.btr.status = "Closed";
+        	//$scope.$save();
+        	//$scope.btr.status.update();
+        };
+        
+        $scope.approve = function () {
+        	$scope.btr.status = "Issuing ticket";
+        };
+        $scope.reject = function () {
+        	$scope.btr.status = "Initiated";
+        };
+        */
     });

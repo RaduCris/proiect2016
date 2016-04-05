@@ -88,7 +88,8 @@
             "edit": "Editer",
             "delete": "Supprimer",
             "save": "Sauvegarder",
-            "view": "Voir"
+            "view": "Voir",
+            "close": "Fermer"
         },
         "detail": {
             "field": "Champs",
@@ -96,6 +97,9 @@
         },
         "delete": {
             "title": "Confirmation de suppression"
+        },
+        "close": {
+            "title": "Confirmation de fermeture"
         },
         "validation": {
             "required": "Ce champs est obligatoire.",

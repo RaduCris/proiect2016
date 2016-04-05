@@ -87,7 +87,8 @@
             "delete": "Delete",
             "edit": "Edit",
             "save": "Save",
-            "view": "View"
+            "view": "View",
+            "close": "Close"
         },
         "detail": {
             "field": "Field",
@@ -95,6 +96,9 @@
         },
         "delete": {
             "title": "Confirm delete operation"
+        },
+        "close": {
+            "title": "Confirm close operation"
         },
         "validation": {
             "required": "This field is required.",

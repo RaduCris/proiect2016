@@ -128,5 +128,34 @@ angular.module('btravelappApp')
                         $state.go('^');
                     })
                 }]
-            });
+            })
+        // close
+        .state('btr.close', {
+            parent: 'btr',
+            url: '/{id}/close',
+            data: {
+                //authorities: ['ROLE_USER'], MODIFICAT 08.03.2016
+            	authorities: ['ROLE_MANAGER'],
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'scripts/app/entities/btr/btr-close-dialog.html',
+                    controller: 'BtrCloseController',
+                    size: 'md',
+                    resolve: {
+                    	entity: function () {
+                            return {
+                            	entity: ['Btr', function(Btr) {
+                                    return Btr.get({id : $stateParams.id});
+                                }]                              
+                            };
+                        }
+                    }
+                }).result.then(function(result) {
+                    $state.go('btr', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                })
+            }]
+        });
     });

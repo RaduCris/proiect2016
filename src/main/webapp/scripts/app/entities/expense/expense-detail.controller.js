@@ -4,7 +4,8 @@ angular.module('btravelappApp')
     .controller('ExpenseDetailController', function ($scope, $rootScope, $stateParams, entity, Expense, Btr, Expense_type) {
         $scope.expense = entity;
         $scope.load = function (id) {
-            Expense.get({id: id}, function(result) {
+            Expense.query({id: id}, function(result) {
+        	//Expense.get({id: id}, function(result) {
                 $scope.expense = result;
             });
         };

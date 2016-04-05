@@ -8,7 +8,7 @@ describe('Controller Tests', function() {
         var createController;
 
         beforeEach(inject(function($injector) {
-            $rootScope = $injector.get('$rootScope');
+            $rootScope = $injector.query('$rootScope');
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockExpense = jasmine.createSpy('MockExpense');
@@ -25,7 +25,7 @@ describe('Controller Tests', function() {
                 'Expense_type': MockExpense_type
             };
             createController = function() {
-                $injector.get('$controller')("ExpenseDetailController", locals);
+                $injector.query('$controller')("ExpenseDetailController", locals);
             };
         }));
 

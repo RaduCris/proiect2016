@@ -1,6 +1,7 @@
 package com.btapp.repository;
 
 import com.btapp.domain.Btr;
+import com.btapp.domain.Expense;
 
 import org.springframework.data.jpa.repository.*;
 
@@ -25,5 +26,6 @@ public interface BtrRepository extends JpaRepository<Btr,Long> {
 
     @Query("select btr from Btr btr where btr.supplier.login = ?#{principal.username}")
     List<Btr> findBySupplierIsCurrentUser();
+    
 
 }

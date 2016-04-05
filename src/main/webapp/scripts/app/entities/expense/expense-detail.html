@@ -2,13 +2,23 @@
 <div>
     <h2><span translate="btravelappApp.expense.detail.title">Expense</span> {{expense.id}}</h2>
     <div class="table-responsive">
-        <table class="table table-striped" id="tblOne">
-            <thead>
+        <!--  <table class="table table-striped" id="tblOne"> -->
+        <table class="table table-striped" >
+           <!--   <thead>
             <tr>
                 <th translate="entity.detail.field">Field</th>
                 <th translate="entity.detail.value">Value</th>
             </tr>
             </thead>
+            -->
+            <thead>
+            	<tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
+            		<th><span translate="btravelappApp.expense.expense_cost">Expense_cost</span></th>
+            		<th><span translate="btravelappApp.expense.btr">btr</span></th>
+            		<th><span translate="btravelappApp.expense.expense_type">expense_type</span></th>
+            	</tr>
+            </thead>
+            <!--  
             <tbody>
             <tr>
                 <td>
@@ -18,7 +28,7 @@
                     <span class="form-control-static">{{expense.expense_cost}}</span>
                 </td>
             </tr>
-            <tr>
+ 		    <tr>
                 <td>
                     <span translate="btravelappApp.expense.btr">btr</span>
                 </td>
@@ -34,6 +44,14 @@
                     <a class="form-control-static" ui-sref="expense_type.detail({id:expense.expense_type.id})">{{expense.expense_type.type}}</a>
                 </td>
             </tr>
+            </tbody>
+            -->
+            <tbody>
+            	<tr ng-repeat="expense in expenses track by expense.id">
+            		<td><span class="form-control-static">{{expense.expense_cost}}</span></td>
+            		<td><a class="form-control-static" ui-sref="btr.detail({id:expense.btr.id})">{{expense.btr.id}}</a></td>
+            		<td><a class="form-control-static" ui-sref="expense_type.detail({id:expense.expense_type.id})">{{expense.expense_type.type}}</a></td>
+            	</tr>
             </tbody>
         </table>
     </div>

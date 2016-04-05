@@ -62,16 +62,29 @@ public class ExpenseService {
         Page<Expense> result = expenseRepository.findAll(pageable); 
         return result;
     }
-
-    /**
+    
+    /** OLD
+     *  get one expense by id.
+     *  @return the entity
+     
+    @Transactional(readOnly = true) 
+    public Expense findOne(Long id) {
+        log.debug("Request to get Expense : {}", id);
+       Expense expense = expenseRepository.findOne(id);
+        
+        return expense;
+    }
+*/
+    /** NEW
      *  get one expense by id.
      *  @return the entity
      */
     @Transactional(readOnly = true) 
-    public Expense findOne(Long id) {
+    public List<Expense> findOne(Long id) {
         log.debug("Request to get Expense : {}", id);
-        Expense expense = expenseRepository.findOne(id);
-        return expense;
+       // Expense expense = expenseRepository.findOne(id);
+        List<Expense> expense = expenseRepository.findOneById(id);
+        return  expense;
     }
 
     /**
@@ -99,11 +112,12 @@ public class ExpenseService {
     /** INCERCARE
      *  get expenses by btr id.
      *  @return the entity
-     
+      
     public Expense findOneById(Long id) {
         //log.debug("Request to get Expense for a btr : {}", id);
         Expense expense = (Expense) expenseRepository.findOneById();
         return expense;
     }
-    */
+  */
+
 }
