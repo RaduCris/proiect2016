@@ -160,5 +160,38 @@ angular.module('btravelappApp')
                     $state.go('^');
                 })
             }]
+        })
+        
+     // reject
+        .state('btr.reject', {
+            parent: 'btr',
+            url: '/{id}/reject',
+            data: {
+                //authorities: ['ROLE_USER'], MODIFICAT 08.03.2016
+            	authorities: ['ROLE_MANAGER'],
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'scripts/app/entities/btr/btr-reject-dialog.html',
+                    controller: 'BtrRejectController',
+                    size: 'md',
+                    resolve: {
+                    	//entity: function () {
+                          //  return {
+                            	entity: ['Btr', function(Btr) {
+                            		//console.log(id);
+                            		console.log($stateParams.id);
+                            		//console.log(btr);
+                                    return Btr.get({id : $stateParams.id});                                  
+                                }]                              
+                            //};
+                        //}
+                    }
+                }).result.then(function(result) {
+                    $state.go('btr', null, { reload: true });
+                }, function() {
+                    $state.go('^');
+                })
+            }]
         });
     });

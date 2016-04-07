@@ -16,6 +16,9 @@
             "close": {
                 "questionclose": "Are you sure you want to close Btr {{ id }}?"
             },
+            "reject": {
+                "questionreject": "Are you sure you want to reject Btr {{ id }}?"
+            },
             "detail": {
                 "title": "BTR"
             },

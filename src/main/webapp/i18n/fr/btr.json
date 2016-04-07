@@ -14,7 +14,10 @@
                 "question": "Etes-vous certain de vouloir supprimer le Btr {{ id }} ?"
             },
             "close": {
-                "question": "Êtes-vous sûr de vouloir fermer le Btr {{ id }}?"
+                "questionclose": "Êtes-vous sûr de vouloir fermer le Btr {{ id }}?"
+            },
+             "reject": {
+                "questionreject": "Êtes-vous sûr de vouloir rejeter le Btr {{ id }}?"
             },
             "detail": {
                 "title": "BTR"

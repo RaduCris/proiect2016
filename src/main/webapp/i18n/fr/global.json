@@ -89,7 +89,8 @@
             "delete": "Supprimer",
             "save": "Sauvegarder",
             "view": "Voir",
-            "close": "Fermer"
+            "close": "Fermer",
+            "reject": "Rejeter"
         },
         "detail": {
             "field": "Champs",
@@ -100,6 +101,9 @@
         },
         "close": {
             "title": "Confirmation de fermeture"
+        },
+        "reject": {
+            "title": "Confirmation de rejeter"
         },
         "validation": {
             "required": "Ce champs est obligatoire.",

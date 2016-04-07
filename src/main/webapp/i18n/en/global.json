@@ -88,7 +88,8 @@
             "edit": "Edit",
             "save": "Save",
             "view": "View",
-            "close": "Close"
+            "close": "Close",
+            "reject": "Reject"
         },
         "detail": {
             "field": "Field",
@@ -99,6 +100,9 @@
         },
         "close": {
             "title": "Confirm close operation"
+        },
+        "reject": {
+            "title": "Confirm reject operation"
         },
         "validation": {
             "required": "This field is required.",
