@@ -47,7 +47,7 @@
     </div>
     <br/>
     <div class="table-responsive">
-        <table class="jh-table table table-striped">
+        <table class="jh-table table table-striped" >
             <thead>
                 <tr jh-sort="predicate" ascending="reverse" callback="loadAll()">
                     <th jh-sort-by="id"><span translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -72,7 +72,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="btr in btrs track by btr.id">
+                <tr ng-repeat="btr in btrs track by btr.id" ng-show="btr.status!='Closed'">
                     <td><a ui-sref="btr.detail({id:btr.id})">{{btr.id}}</a></td>
                     <td ng-model="status">{{btr.status}}</td>
                     <td>{{btr.start_date | date:'medium'}}</td>

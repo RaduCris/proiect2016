@@ -46,10 +46,11 @@ angular.module('btravelappApp')
                 last_modified_date: null,
                 id: null
             };
+            
         };
       
         
-        /* PRIMA INCERCARE PENTRU CANCEL; MERGE DAR NU MODIFICA SI IN SPATE
+        /* PRIMA INCERCARE PENTRU cancel,approve si reject; MERG toate DAR NU MODIFICA SI IN SPATE
         $scope.cancel = function () {  
         	//$scope.users.push({'status':$scope.btr.status});
         	$scope.btr.status = "Closed";

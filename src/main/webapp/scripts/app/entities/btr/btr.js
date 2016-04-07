@@ -143,13 +143,16 @@ angular.module('btravelappApp')
                     controller: 'BtrCloseController',
                     size: 'md',
                     resolve: {
-                    	entity: function () {
-                            return {
+                    	//entity: function () {
+                          //  return {
                             	entity: ['Btr', function(Btr) {
-                                    return Btr.get({id : $stateParams.id});
+                            		//console.log(id);
+                            		console.log($stateParams.id);
+                            		//console.log(btr);
+                                    return Btr.get({id : $stateParams.id});                                  
                                 }]                              
-                            };
-                        }
+                            //};
+                        //}
                     }
                 }).result.then(function(result) {
                     $state.go('btr', null, { reload: true });
