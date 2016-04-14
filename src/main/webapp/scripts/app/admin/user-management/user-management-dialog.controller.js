@@ -31,4 +31,22 @@ angular.module('btravelappApp').controller('UserManagementDialogController',
         $scope.clear = function() {
             $uibModalInstance.dismiss('cancel');
         };
+        // validare mail
+        var app = angular.module('btravelappApp', []);
+        app.directive('myDirective', function() {
+            return {
+                require: 'ngModel',
+                link: function(scope, element, attr, mCtrl) {
+                    function myValidation(value) {
+                        if (value.indexOf("@") > -1 && value.indexOf(".")>value.indexOf("@")) {
+                            mCtrl.$setValidity('charE', true);
+                        } else {
+                            mCtrl.$setValidity('charE', false);
+                        }
+                        return value;
+                    }
+                    mCtrl.$parsers.push(myValidation);
+                }
+            };
+        });
 }]);

@@ -3,7 +3,7 @@
     <jh-alert></jh-alert>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4 no-padding-left">
+            <div class="col-xs-4 no-padding-left" has-authority="ROLE_SUPPLIER">
                 <button class="btn btn-primary" ui-sref="expense.new" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span 
@@ -63,7 +63,8 @@ class="hidden-xs"                        translate="btravelappApp.expense.home.c
                             </button>
                             <button type="submit"
                                     ui-sref="expense.delete({id:expense.id})"
-                                    class="btn btn-danger btn-sm">                                    
+                                    class="btn btn-danger btn-sm"
+                                    has-authority="ROLE_ADMIN">                                    
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
                             </button>
@@ -79,5 +80,5 @@ class="hidden-xs"                        translate="btravelappApp.expense.home.c
 <button type="submit"
 		onclick="location.href='/#/btrs'"            
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Btrs
 </button>

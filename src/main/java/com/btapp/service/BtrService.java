@@ -53,34 +53,78 @@ public class BtrService {
         btr.getUser();
         Optional<User> user = userRepository.findOneByLogin(User.getCurrentUser());
         
-        if(btr.getStatus() == null){
-        	btr.setStatus("Initiated");    }
+        if(btr.getStatus() == null)
+        	btr.setStatus("Initiated");    
         else
-	        if(btr.getStatus() == "Initiated"){
-	        	btr.setStatus("Waiting for approval"); 
-	        }
+	        if(btr.getStatus() == "Initiated")
+	        	btr.setStatus("Waiting for approval");
         
-        btr.setAssigned_from((User)user.get());
+        if(btr.getId() == null)
+        {
+	        btr.setAssigned_from((User)user.get());
+	        
+	        btr.setSupplier(btr.getAssigned_to()); // ma intereseaza supplier-ul curent care se ocupa de btr 
+	        btr.setManager((User)user.get());
+	        btr.setRequest_date(ZonedDateTime.now());
+	        btr.setLast_modified_date(ZonedDateTime.now()); // modificat 25.03.2016
+        }
+        else
+        {
+        	//if(btr.getStatus() == "Waiting for approval"){
+        	//	btr.setAssigned_from(btr.getSupplier());
+        	//}
+        	btr.setAssigned_from((User)user.get());
+	        btr.setLast_modified_date(ZonedDateTime.now()); // modificat 25.03.2016
+        }
         
-        btr.setSupplier(btr.getAssigned_to()); // ma intereseaza supplier-ul curent care se ocupa de btr 
-        btr.setManager((User)user.get());
-        btr.setRequest_date(ZonedDateTime.now());
-        btr.setLast_modified_date(ZonedDateTime.now()); // modificat 25.03.2016
         Btr result = btrRepository.save(btr);
         btrSearchRepository.save(result);
         return result;
+       
     }
 
     /**
      * Save a approved btr.
      * @return the persisted entity
-     */
+     
     public Btr approve(Btr btr) {
         log.debug("Request to approve Btr : {}", btr);
-
-        if(btr.getStatus() == "Waiting for approval"){
-        	btr.setStatus("Issuing tickets");
-        }
+         Optional<User> user = userRepository.findOneByLogin(User.getCurrentUser());
+	   
+        if(user.get().getAuthorities().equals("ROLE_MANAGER")) 
+        		if( user.get().getIdManager() != null || btr.getAssigned_to() != null )           
+		        {
+		        	btr.setStatus("Waiting for approval"); // de la manager n+2
+		        	btr.setAssigned_from((User)user.get());
+		        	btr.setAssigned_to(null); 
+		        }
+		        else
+		        	if( user.get().getIdManager() == null || btr.getAssigned_to() == null ) 
+		        {
+		        	btr.setStatus("Issuing tickets");
+		            btr.setAssigned_to(btr.getSupplier());
+		            btr.setAssigned_from(btr.getAssigned_to());
+		        }
+       //btr.getUser().getAuthorities().equals("ROLE_MANAGER") 
+       //  if(btr.getAssigned_to().getAuthorities().equals("ROLE_MANAGER")
+      //		   && btr.getAssigned_from().getAuthorities().equals("ROLE_SUPPLIER") 
+      	//	   && btr.getStatus().equals("Waiting for approval") )
+       //  {
+      	//   btr.setAssigned_from((User)user.get());
+      	  // btr.setAssigned_to(btr.getUser().getIdManager());
+     // 	   btr.setStatus("Asa da!");
+      //   }
+      //   else
+      //	   if(btr.getUser().getIdManager().isEmpty())
+      //			{
+      //    			btr.setStatus("Issuing tickets");
+       //   			btr.setAssigned_to(btr.getSupplier());
+       //   			btr.setAssigned_from(btr.getAssigned_to());
+      //			}
+    
+       // if(btr.getStatus() == "Waiting for approval"){
+       // 	btr.setStatus("Issuing tickets");
+       // }
         Btr result = btrRepository.save(btr);
         btrSearchRepository.save(result);
         return result;
@@ -88,26 +132,26 @@ public class BtrService {
        // ((BtrService) btrSearchRepository).approve(result);
        // return result;
     }
-    
+    */
     /**
      * Save a rejected btr.
      * @return the persisted entity
-     */
+     
     public Btr reject(Btr btr) {
         log.debug("Request to reject Btr : {}", btr);
-
-        if(btr.getStatus() == "Waiting for approval"){
+        Optional<User> user = userRepository.findOneByLogin(User.getCurrentUser());
         	btr.setStatus("Initiated");
-        }
+        	btr.setAssigned_to(btr.getSupplier());
+			btr.setAssigned_from((User)user.get());
         Btr result = btrRepository.save(btr);
         btrSearchRepository.save(result);
         return result;
     }
-    
+    */
     /**
      * Save a canceled btr.
      * @return the persisted entity
-     */
+     
     public Btr cancel(Btr btr) {
         log.debug("Request to cancel Btr : {}", btr);
         btr.setStatus("Canceled");
@@ -116,7 +160,7 @@ public class BtrService {
         btrSearchRepository.save(result);
         return result;
     }
-    
+    */
 	/**
      *  get all the btrs.
      *  @return the list of entities

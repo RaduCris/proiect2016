@@ -72,9 +72,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="btr in btrs track by btr.id" ng-show="btr.status!='Closed'">
+                 <tr ng-repeat="btr in btrs track by btr.id" ng-show="btr.status!='Closed' && btr.status!='Finished'">  
+               <!--  <tr ng-repeat="btr in btrs track by btr.id | filter : {assigned_from: 'manager'} : true" > --> 
                     <td><a ui-sref="btr.detail({id:btr.id})">{{btr.id}}</a></td>
-                    <td ng-model="status">{{btr.status}}</td>
+                    <td ng-model="status"><b>{{btr.status}}</b></td>
                     <td>{{btr.start_date | date:'medium'}}</td>
                     <td>{{btr.end_date | date:'medium'}}</td>
                     <td>{{btr.location}}</td>
@@ -138,6 +139,15 @@
                                 <span class="glyphicon glyphicon-pencil"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.edit"></span>
                             </button>
+                            <!-- buton de finalizare proces -->
+                            <button type="submit"
+                                    ui-sref="btr.finish({id:btr.id})"
+                                    class="btn btn-success btn-sm"
+                                    has-any-authority="ROLE_SUPPLIER"
+                                    ng-show="btr.status=='Issuing ticket'">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span class="hidden-xs hidden-sm" translate="entity.action.finish"></span>
+                            </button>
                             <!--  buton de anulare  "  -->
                             <button type="submit"   
                             		ui-sref="btr.close({id:btr.id})" 
@@ -158,7 +168,9 @@
                     </td> 
                     <td class="text-right" has-authority="ROLE_MANAGER" ng-show="btr.status=='Waiting for approval'">
                         <div class="btn-group flex-btn-group-container" ng-controller="BtrController">
-                        	<button type="submit" class="btn btn-success btn-sm" ng-model="btr.status" ng-click="approve()"> 
+                        	<button type="submit" 
+                        			ui-sref="btr.approve({id:btr.id})"
+                        			class="btn btn-success btn-sm" > 
                         		<span>Approve</span>
                         	</button>
                         	<button type="submit" 

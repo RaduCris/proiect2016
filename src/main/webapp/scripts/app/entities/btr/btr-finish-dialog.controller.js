@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('btravelappApp')
-	.controller('BtrRejectController', function($scope, $uibModalInstance, entity, Btr) {
+	.controller('BtrFinishController', function($scope, $uibModalInstance, entity, Btr) {
 
         $scope.btr = entity;
         $scope.clear = function() {
@@ -10,6 +10,7 @@ angular.module('btravelappApp')
         
         var onSaveSuccess = function (result) {
             $scope.$emit('btravelappApp:btrUpdate', result);
+        	//$scope.$emit('Closed', result);
             $uibModalInstance.close(result);
             $scope.isSaving = false;
         };
@@ -18,14 +19,11 @@ angular.module('btravelappApp')
             $scope.isSaving = false;
         };
         
-        $scope.confirmReject = function (id) {
+        $scope.confirmFinish = function (id) {
         	$scope.isSaving = true;
-        	console.log($scope.btr.id); 
-        	$scope.btr.status="Initiated";
-        	$scope.btr.assigned_to=$scope.btr.supplier;
-        	$scope.btr.assigned_from=$scope.btr.login;
+        	console.log($scope.btr.id); // asta imi returneaza id-ul
+        	$scope.btr.status="Finished";
         	Btr.update($scope.btr, onSaveSuccess, onSaveError);
         	
         };
-        
     });

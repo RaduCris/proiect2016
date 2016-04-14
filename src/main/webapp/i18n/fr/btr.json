@@ -16,25 +16,31 @@
             "close": {
                 "questionclose": "Êtes-vous sûr de vouloir fermer le Btr {{ id }}?"
             },
+            "finish": {
+                "questionfinish": "Êtes-vous sûr de vouloir terminer le Btr {{ id }}?"
+            },
              "reject": {
                 "questionreject": "Êtes-vous sûr de vouloir rejeter le Btr {{ id }}?"
+            },
+             "rapprove": {
+                "questionapprove": "Êtes-vous sûr de vouloir approuver le Btr {{ id }}?"
             },
             "detail": {
                 "title": "BTR"
             },
-            "status": "Status",
-            "start_date": "Start Date",
-            "end_date": "End Date",
-            "location": "Location",
-            "center_cost": "Center Cost",
-            "request_date": "Request Date",
-            "last_modified_date": "Last Modified Date",
-            "user": "User",
-            "expense": "Expense",
-            "assigned_to": "Assigned To",
-            "assigned_from": "Assigned From",
-            "manager": "Manager",
-            "supplier": "Supplier"
+            "status": "Statut",
+            "start_date": "Date de début",
+            "end_date": "Date de fin",
+            "location": "Emplacement",
+            "center_cost": "Coût Centre",
+            "request_date": "Date de la demande",
+            "last_modified_date": "Dernière Date de Modification",
+            "user": "Utilisateur",
+            "expense": "Frais",
+            "assigned_to": "Assigné à",
+            "assigned_from": "Assigné De",
+            "manager": "Gérante",
+            "supplier": "Fournisseur"
         }
     }
 }

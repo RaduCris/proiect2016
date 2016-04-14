@@ -76,7 +76,7 @@
             }
         },
         "field": {
-            "id": "ID"
+            "id": "Nr."
         }
     },
     "entity": {
@@ -90,7 +90,9 @@
             "save": "Sauvegarder",
             "view": "Voir",
             "close": "Fermer",
-            "reject": "Rejeter"
+            "finish": "Terminer",
+            "reject": "Rejeter",
+            "approve": "Approuver"
         },
         "detail": {
             "field": "Champs",
@@ -102,8 +104,14 @@
         "close": {
             "title": "Confirmation de fermeture"
         },
+        "finish": {
+            "title": "Confirmation de terminure"
+        },
         "reject": {
             "title": "Confirmation de rejeter"
+        },
+        "approve": {
+        	"title": "Confirmation de approuver"
         },
         "validation": {
             "required": "Ce champs est obligatoire.",

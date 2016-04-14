@@ -75,7 +75,7 @@
             }
         },
         "field": {
-            "id": "ID"
+            "id": "Nr."
         }
     },
     "entity": {
@@ -89,7 +89,9 @@
             "save": "Save",
             "view": "View",
             "close": "Close",
-            "reject": "Reject"
+            "finish": "Finish",
+            "reject": "Reject",
+            "approve": "Approve"
         },
         "detail": {
             "field": "Field",
@@ -101,8 +103,14 @@
         "close": {
             "title": "Confirm close operation"
         },
+        "finish": {
+            "title": "Confirm finish operation"
+        },
         "reject": {
             "title": "Confirm reject operation"
+        },
+        "approve": {
+            "title": "Confirm approve operation"
         },
         "validation": {
             "required": "This field is required.",
