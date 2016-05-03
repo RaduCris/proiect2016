@@ -7,9 +7,11 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Activities",
-                "btr": "BTR",
+                "btr": "Business Travel Request",
                 "expense_type": "Expense Type",
-                "expense": "Expense",
+                "expense": "Expenses",
+                "comments": "Comments",
+                "historybtr": "Business Travel Requests Historys",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -75,7 +77,7 @@
             }
         },
         "field": {
-            "id": "Nr."
+            "id": "No."
         }
     },
     "entity": {
@@ -113,7 +115,7 @@
             "title": "Confirm approve operation"
         },
         "validation": {
-            "required": "This field is required.",
+            "required": "",
             "minlength": "This field is required to be at least {{ min }} characters.",
             "maxlength": "This field cannot be longer than {{ max }} characters.",
             "min": "This field should be more than {{ min }}.",

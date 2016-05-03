@@ -84,7 +84,7 @@ public class BtrResource {
     public ResponseEntity<List<Btr>> getAllBtrs(Pageable pageable)
         throws URISyntaxException {
         log.debug("REST request to get a page of Btrs");
-        Page<Btr> page = btrService.findAll(pageable); 
+        Page<Btr> page = btrService.finByAssigned_toOrEmployee(pageable); // findAll
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/btrs");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

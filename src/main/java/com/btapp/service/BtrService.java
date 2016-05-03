@@ -5,25 +5,21 @@ import com.btapp.domain.User;
 import com.btapp.repository.BtrRepository;
 import com.btapp.repository.UserRepository;
 import com.btapp.repository.search.BtrSearchRepository;
-import com.btapp.web.rest.UserResource;
-import com.btapp.web.rest.dto.ManagedUserDTO;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
-
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.QueryBuilders.queryStringQuery;
 
 /**
  * Service Implementation for managing Btr.
@@ -161,12 +157,24 @@ public class BtrService {
         return result;
     }
     */
-	/**
+	/** OLD
      *  get all the btrs.
      *  @return the list of entities
-     */
+    
     @Transactional(readOnly = true) 
     public Page<Btr> findAll(Pageable pageable) {
+        log.debug("Request to get all Btrs");
+        Page<Btr> result = btrRepository.findAll(pageable); 
+        return result;
+    }
+     */
+    
+    /** OLD
+     *  get all the btrs.
+     *  @return the list of entities
+    */
+    @Transactional(readOnly = true) 
+    public Page<Btr> finByAssigned_toOrEmployee(Pageable pageable) {
         log.debug("Request to get all Btrs");
         Page<Btr> result = btrRepository.findAll(pageable); 
         return result;

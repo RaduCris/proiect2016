@@ -7,10 +7,11 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Activités",
-                "btr": "BTR",
+                "btr": "Demande Voyage d'affaires",
                 "expense_type": "Type de dépense",
                 "expense": "Frais",
-                "expense": "Expense",
+                "comments": "Commentaires",
+                "historybtr": "Voyage d'affaires Demandes Histoires",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -76,7 +77,7 @@
             }
         },
         "field": {
-            "id": "Nr."
+            "id": "No."
         }
     },
     "entity": {
@@ -114,7 +115,7 @@
         	"title": "Confirmation de approuver"
         },
         "validation": {
-            "required": "Ce champs est obligatoire.",
+            "required": "",
             "minlength": "Ce champs doit faire au minimum {{min}} caractères.",
             "maxlength": "Ce champs doit faire moins de {{max}} caractères.",
             "min": "Ce champs doit être inférieur à {{min}}.",

@@ -6,18 +6,36 @@
                 ng-click="clear()">&times;</button>
         <h4 class="modal-title" id="myBtrLabel" translate="btravelappApp.btr.home.createOrEditLabel">Create or edit a Btr</h4>
     </div>
+    
     <div class="modal-body" >
-	        <jh-alert-error></jh-alert-error>
-	        <div class="form-group" has-authority="ROLE_SUPPLIER">
+      <table class="modal-body">
+      		<jh-alert-error></jh-alert-error>
+       <tr>
+        <td>
+	    <div class="form-group" has-authority="ROLE_SUPPLIER">
             <label class="control-label" translate="btravelappApp.btr.status" for="field_status">Status</label>
+            <span><b translate="btravelappApp.btr.star"></b></span>
             <select class="form-control" id="field_status" name="status" ng-model="btr.status" >
                 <option value="Initiated">Initiated</option>
                 <option value="Waiting for approval">Waiting for approval</option>
             </select>
         </div>
-        
+        </td>
+        <td>
+        <div class="form-group" has-authority="ROLE_SUPPLIER">
+            <label translate="btravelappApp.btr.assigned_to" for="field_assigned_to">assigned_to</label>
+            <span><b translate="btravelappApp.btr.star"></b></span>
+            <select class="form-control" id="field_assigned_to" name="assigned_to" ng-model="btr.assigned_to" ng-options="user as user.login for user in users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+        </td>
+        </tr>
+   	  <tr>
+    	<td>
         <div class="form-group" has-authority="ROLE_MANAGER">
             <label class="control-label" translate="btravelappApp.btr.start_date" for="field_start_date">Start_date</label>
+            <span><b translate="btravelappApp.btr.star"></b></span>
             <input id="field_start_date" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="btr.start_date" is-open="datePickerForStart_date.status.opened"
             required/>
             <span class="input-group-btn">
@@ -34,8 +52,11 @@
                 </p>
             </div>
         </div>
+        </td>
+        <td>
         <div class="form-group" has-authority="ROLE_MANAGER">
             <label class="control-label" translate="btravelappApp.btr.end_date" for="field_end_date">End_date</label>
+            <span><b translate="btravelappApp.btr.star"></b></span>
             <input id="field_end_date" type="text" class="form-control" uib-datepicker-popup="{{dateformat}}" ng-model="btr.end_date" is-open="datePickerForEnd_date.status.opened"
             required/>
             <span class="input-group-btn">
@@ -52,8 +73,13 @@
                 </p>
             </div>
         </div>
+        </td>
+    </tr>
+    <tr>
+    	<td>
         <div class="form-group" has-authority="ROLE_MANAGER">
             <label class="control-label" translate="btravelappApp.btr.location" for="field_location">Location</label>
+            <span><b translate="btravelappApp.btr.star"></b></span>
             <input type="text" class="form-control" name="location" id="field_location"
                     ng-model="btr.location"
                     required />
@@ -64,8 +90,11 @@
                 </p>
             </div>
         </div>
+        </td>
+        <td>
         <div class="form-group" has-authority="ROLE_MANAGER">
             <label class="control-label" translate="btravelappApp.btr.center_cost" for="field_center_cost">Center_cost</label>
+            <span><b translate="btravelappApp.btr.star"></b></span>
             <input type="text" class="form-control" name="center_cost" id="field_center_cost"
                     ng-model="btr.center_cost"
                     required />
@@ -76,18 +105,29 @@
                 </p>
             </div>
         </div>
+        </td>
+     </tr>
+     <tr>
+     	<td>
         <div class="form-group" has-authority="ROLE_MANAGER">
             <label translate="btravelappApp.btr.user" for="field_user">user</label>
+            <span><b translate="btravelappApp.btr.star"></b></span>
             <select class="form-control" id="field_user" name="user" ng-model="btr.user" ng-options="user as user.login for user in users track by user.id">
                 <option value=""></option>
             </select>
         </div>
-        <div class="form-group" >
+        </td>
+        <td>
+        <div class="form-group" has-authority="ROLE_MANAGER">
             <label translate="btravelappApp.btr.assigned_to" for="field_assigned_to">assigned_to</label>
+            <span><b translate="btravelappApp.btr.star"></b></span>
             <select class="form-control" id="field_assigned_to" name="assigned_to" ng-model="btr.assigned_to" ng-options="user as user.login for user in users track by user.id">
                 <option value=""></option>
             </select>
         </div>
+        </td>
+       </tr> 
+     </table>
         <!--  
         <div class="form-group">
             <label translate="btravelappApp.btr.supplier" for="field_supplier">supplier</label>

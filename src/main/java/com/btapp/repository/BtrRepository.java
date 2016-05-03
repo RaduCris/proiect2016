@@ -3,6 +3,8 @@ package com.btapp.repository;
 import com.btapp.domain.Btr;
 import com.btapp.domain.Expense;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 
 import java.util.List;
@@ -27,5 +29,9 @@ public interface BtrRepository extends JpaRepository<Btr,Long> {
     @Query("select btr from Btr btr where btr.supplier.login = ?#{principal.username}")
     List<Btr> findBySupplierIsCurrentUser();
     
+    @Query("select btr from Btr btr where btr.assigned_from.login = ?#{principal.username} or"
+    		+ " btr.user.login = ?#{principal.username}")
+    Page<Btr> finByAssigned_toOrEmployeeIsCurrentUser(Pageable pageable);
+
 
 }

@@ -65,14 +65,14 @@
                     <th jh-sort-by="manager.login"><span translate="btravelappApp.btr.manager">manager</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="supplier.login"><span translate="btravelappApp.btr.supplier">supplier</span> <span class="glyphicon glyphicon-sort"></span></th>
                     -->
-                    <th><span><center>Expenses</center></span></th>
-                    <th><span><center>BTR Management</center></span></th>
-                    <th has-authority="ROLE_MANAGER" ><span><center>BTR Approval</center></span></th>
+                    <th><span><center>Business Travel Request's Expenses</center></span></th>
+                    <th><span><center>Business Travel Request Management</center></span></th>
+                    <th has-authority="ROLE_MANAGER" ><span><center>Business Travel Request Approval</center></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                 <tr ng-repeat="btr in btrs track by btr.id" ng-show="btr.status!='Closed' && btr.status!='Finished'">  
+                 <tr ng-repeat="btr in btrs track by btr.id" ng-show="btr.status!='Closed'">  
                <!--  <tr ng-repeat="btr in btrs track by btr.id | filter : {assigned_from: 'manager'} : true" > --> 
                     <td><a ui-sref="btr.detail({id:btr.id})">{{btr.id}}</a></td>
                     <td ng-model="status"><b>{{btr.status}}</b></td>
@@ -151,8 +151,9 @@
                             <!--  buton de anulare  "  -->
                             <button type="submit"   
                             		ui-sref="btr.close({id:btr.id})" 
-                                    class="btn btn-danger btn-sm"                                                             
-                                    has-authority="ROLE_MANAGER">                                    
+                                    class="btn btn-warning"                                                             
+                                    has-authority="ROLE_MANAGER"
+                                    ng-show="btr.status!='Finished'">                                    
                                 <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;
                                 <span class="hidden-xs hidden-sm" translate="entity.action.close"></span>
                             </button>
@@ -161,7 +162,7 @@
                                     ui-sref="btr.delete({id:btr.id})"
                                     class="btn btn-danger btn-sm"
                                     has-authority="ROLE_ADMIN">                                    
-                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="glyphicon glyphicon-minus"></span>
                                 <span class="hidden-xs hidden-sm" translate="entity.action.delete"></span>
                             </button>
                         </div>

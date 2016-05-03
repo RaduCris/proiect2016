@@ -79,11 +79,11 @@
             </div>
         </div>
         
-        <div class="form-group" > 							<!-- modificat 11.03.2016-->
+        <div class="form-group" > 							<!-- modificat 11.03.2016  -->
         	<label translate="user-management.idManager" for="field_in_user">ID Manager</label>
             <!--  <input type="text" class="form-control" name="idManager" ng-model="user.idManager"> -->
-            <select class="form-control" name="user" id="field_in_user" ng-model="user.idManager" 
-             	ng-options="user.login as user.login for user in users">
+            <select ng-hide="::filter.idManager != null" class="form-control" name="user" id="field_in_user" ng-model="user.idManager" 
+             	ng-options="user.login as user.idManager for user in users">
         			<option value=""></option>
      		</select>
         </div>

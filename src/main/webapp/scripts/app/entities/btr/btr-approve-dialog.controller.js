@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('btravelappApp')
-	.controller('BtrApproveController', function($scope, $uibModalInstance, entity, Btr) {
+	.controller('BtrApproveController', function($scope, $uibModalInstance,$http, entity, Btr) {
 
-		//$scope.user = entity;
+		$scope.user = entity;
         $scope.btr = entity;
         $scope.clear = function() {
             $uibModalInstance.dismiss('cancel');
@@ -18,6 +18,12 @@ angular.module('btravelappApp')
         var onSaveError = function (result) {
             $scope.isSaving = false;
         };
+        
+        /*var result = function(id){
+			return $http.get('api/btrs/btr/approve/'+id).then(function(response){
+				return response.data;
+			})
+		};*/
         
        /* var isManager = function(result){
         	result = $scope.user.idManager;
@@ -39,9 +45,49 @@ angular.module('btravelappApp')
         			//var manager = $scope.btr.assigned_to.idManager;
         			
         		// TREBUIE SA VAD CUM MODIFIC ASSIGNED_TO DIN MANAGER IN MANAGER2 
-        			//(adik din manager in manager2 <<manager-ul lui manager)
+        			//(adik din manager in manager2 <<manager-ul lui manager>>)
+        		
+        		/*
+        			var result = function(id){
+        				return $http.get('api/users/user/'+id).then(function(result){
+        					 console.log($scope.btr.assigned_to.login);
+        					 $cope.btr.assigned_to.login = $scope.btr.assigned_to.idManager ;
+        					 console.log($scope.btr.assigned_to.login);
+        				}).then(function(response){
+        						console.log(response.data);
+        					 return response.data;
+        				})
+				
+        		 var result = function(id) {
+                     return $http.get('api/users/user/'+id).then(function(response) {
+                    	 console.log(response.data);
+                         return response.data;
+                     })
+                 }
+        				
+        		 var result = function (result) {
+        			 	$scope.btr.assigned_to = function(id) {
+        		             return $http.get('api/users/user/'+id).then(function(response) {
+        		            	 console.log(response.data);
+        		                 return response.data;
+        		             })
+        		         }
+        	        };*/
+        		var managermic = function(id){
+        			return $http.get('api/users/user/'+id).then(function(response){
+        				console.log(response.data);
+        				return response.data;})
+        		}
+        		
+        		var managermare = function(id){
+        			return $http.get('api/users/user/'+managermic(id)).then(function(response){
+        				console.log(response.data);
+        				return response.data;
+        			})
+        		}
+        		 
 	        		$scope.btr.assigned_from = $scope.btr.manager;
-	        		
+	        		$scope.btr.assigned_to = managermare($scope.btr.assigned_to.id);
 	        	}
         	else
         		{
@@ -53,9 +99,11 @@ angular.module('btravelappApp')
         	
         	Btr.update($scope.btr, onSaveSuccess, onSaveError);
         	
-        	console.log($scope.btr.assigned_to); //manager2 
-        	console.log($scope.btr.assigned_from); // manager
         	
+        	console.log($scope.btr.assigned_from); // manager
+        	console.log($scope.btr.assigned_to); //manager2 
+        	
+        
         	
         	//Btr.update($scope.btr, onSaveSuccess, onSaveError);
         	//}
